@@ -3,20 +3,23 @@
 }
 
 .fond {
-  width: 280px;
+  width: 260px;
   height: 100px;
   opacity: 0.5;
   background-color: #1c1c1b;
 }
 
-.Lannister {
-  width: 118px;
-  height: 45px;
+.forename {
   font-size: 22px;
   color: #ffffff;
 }
 
-.Lannister .text-style-1 {
+.name{
   font-family: Arial;
   font-size: 16px;
+  color: #ffffff;
+}
+
+.details{
+  padding-top: 25px;
 }

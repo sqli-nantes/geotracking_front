@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./person-details.component.css']
 })
 export class PersonDetailsComponent implements OnInit {
+  name : string;
+  forename : string;
+  photo : Blob;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    this.name = "Jeanne";
+    this.forename = "Dupont";
   }
+
+  ngOnInit() {}
 
 }
