@@ -8,7 +8,10 @@
   <div id="back">
     bouton back
   </div>
-  <app-person-details></app-person-details>
+  <div *ngFor="let person of people">
+    <app-person-details name={{person.name}} forename={{person.forename}}></app-person-details>
+  </div>
+
 
 
 

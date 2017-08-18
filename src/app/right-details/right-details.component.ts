@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {bootstrap} from '../person-details.service';
 
 @Component({
   selector: 'app-right-details',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./right-details.component.css']
 })
 export class RightDetailsComponent implements OnInit {
-
-  constructor() { }
+people;
+  constructor() {
+    this.people = [];
+   }
 
   ngOnInit() {
+    bootstrap.forEach((person)=>{
+      this.people.push(person);
+    })
   }
 
 }
