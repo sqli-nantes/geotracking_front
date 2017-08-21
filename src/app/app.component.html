@@ -10,8 +10,10 @@
 <!-- <div class="pure-g"> -->
   <!-- <div class="pure-u-1-5"></div>
   <div class="pure-u-3-5"> -->
-    <div id="main-container"> blabla
-     <app-right-details [people]=displayedPeople></app-right-details>
+    <div id="main-container">
+
+     <app-right-details *ngIf="displayedPeople.length != 0" [people]="displayedPeople"></app-right-details>
+
       <div id="mapid"></div>
     </div>
   <!-- </div> -->
