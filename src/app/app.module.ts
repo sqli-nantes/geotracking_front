@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { RightDetailsComponent } from './right-details/right-details.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +14,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
     PersonDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers:[
     ],

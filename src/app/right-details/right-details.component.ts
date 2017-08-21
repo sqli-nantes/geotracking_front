@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {bootstrap} from '../person-details.service';
+import {bootstrap} from '../people.service';
+import {PeopleService} from '../people.service';
 
 @Component({
   selector: 'app-right-details',
@@ -8,14 +9,25 @@ import {bootstrap} from '../person-details.service';
 })
 export class RightDetailsComponent implements OnInit {
 people;
-  constructor() {
-    this.people = [];
-   }
+constructor(private peopleService: PeopleService) {
+  this.people = [];
+}
 
-  ngOnInit() {
-    bootstrap.forEach((person)=>{
-      this.people.push(person);
-    })
-  }
+ngOnInit() {
+  bootstrap.forEach((person) => {
+    this
+      .people
+      .push(person);
+  })
+ this.peopleService.getPeople().then((data)=>{
+   console.log(data);
+        data.forEach((person) => {
+        this
+          .people
+          .push(person);
+  })
+  });
+
+}
 
 }
