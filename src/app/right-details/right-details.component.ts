@@ -14,18 +14,21 @@ constructor(private peopleService: PeopleService) {
 }
 
 ngOnInit() {
-  bootstrap.forEach((person) => {
-    this
-      .people
-      .push(person);
-  })
+  // bootstrap.forEach((person) => {
+  //   this
+  //     .people
+  //     .push(person);
+  // })
+  //
  this.peopleService.getPeople().then((data)=>{
-   console.log(data);
         data.forEach((person) => {
         this
           .people
           .push(person);
+        // this.peopleService.getCoordinates(person.company.address)
   })
+
+        
   });
 
 }

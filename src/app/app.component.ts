@@ -1,32 +1,50 @@
 import { Component } from '@angular/core';
 import 'leaflet';
-import {PeopleService} from './people.service';
+import { PeopleService } from './people.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[PeopleService]
+  providers: [PeopleService]
 })
 
 export class AppComponent {
   title = 'Géolocalisation SQLI';
- 
+  people = [];
 
-  constructor(){
+  constructor(private peopleService: PeopleService) {
   }
 
- ngOnInit() {
-     var mymap = L.map('mapid').setView([47.2172500, -1.5533600], 13);
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1Ijoiam9oYW5uc3FsaSIsImEiOiJjajZodGk5cWswb2VyMnFuaHEyOTl3emZvIn0.x9LnTqwNTEwH5k5Yy13v2Q'
-       }).addTo(mymap);
+  ngOnInit() {
+    var mymap = L.map('mapid').setView([47.2172500, -1.5533600], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1Ijoiam9oYW5uc3FsaSIsImEiOiJjajZodGk5cWswb2VyMnFuaHEyOTl3emZvIn0.x9LnTqwNTEwH5k5Yy13v2Q'
+    }).addTo(mymap);
 
-       L.marker([47.2572500, -1.5533600], {riseOnHover:true}).addTo(mymap);
-       L.circleMarker([47.2072500, -1.5533600], {radius:30}).addTo(mymap);
+    L.marker([47.2572500, -1.5533600], { riseOnHover: true }).addTo(mymap);
+    L.circleMarker([47.2072500, -1.5533600], { radius: 30 }).addTo(mymap).on('click', () => {
+      alert('hhhhhhhhhhh');
+    })
+
+    //Get People
+
+    this.peopleService.getPeople().then((data) => {
+      data.forEach((person) => {
+        this.people.push(person);
+        this.peopleService.getCoordinate(person.company.address).then((coord) => {
+          console.log(coord);
+        })
+
+
+      })
+    });
+
+    //Show circleMarker
+    
 
   }
 }
