@@ -38,18 +38,6 @@ export class PeopleService {
 
     }
 
-    /**
-     * Get every address from people
-     */
-    // getCoordinates(people) {
-    //     // if(!this.people){     this.getPeople(); }
-    //     people.forEach((person) => {
-    //         this.getCoordinate(person.address).then((data) => {
-    //             person.coordinates = {}
-    //             person.coordinates.lat = data["lat"];
-    //         })
-    //     })
-    // }
 
     //http://nominatim.openstreetmap.org/?format=json&addressdetails=0&q=10+rue+de+l
     //aponie+Nantes

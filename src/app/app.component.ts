@@ -28,13 +28,7 @@ export class AppComponent {
       accessToken: 'pk.eyJ1Ijoiam9oYW5uc3FsaSIsImEiOiJjajZodGk5cWswb2VyMnFuaHEyOTl3emZvIn0.x9LnTqwNTEwH5k5Yy13v2Q'
     }).addTo(this.mymap);
 
-    // L.marker([47.2572500, -1.5533600], { riseOnHover: true }).addTo(this.mymap);
-    // L.circleMarker([47.2072500, -1.5533600], { radius: 30 }).addTo(this.mymap).on('click', () => {
-    //   alert('hhhhhhhhhhh');
-    // })
-
     //Get People
-
     this.peopleService.getPeople().then((data) => {
       data.forEach((person) => {
         this.people.push(person);
@@ -43,14 +37,8 @@ export class AppComponent {
           person.lon = coord.lon;
           this.drawCircleMarker(coord, null);
         })
-
-
       })
     });
-
-    //Show circleMarker
-
-
   }
 
   /**
@@ -83,7 +71,6 @@ export class AppComponent {
       if (marker._latlng && marker._latlng.lat == coord.lat && marker._latlng.lng == coord.lon) {
         return true;
       }
-      // return marker.latlng.lat === coord.lat && marker.latlng.lon === coord.lon;
     }
     return false;
   }
@@ -103,21 +90,5 @@ export class AppComponent {
 
   displayPeopleOnMarkerClick(coord) {
     this.displayedPeople = this.peopleService.findPeopleByCoordinates(this.people, coord);
-// this.displayedPeople = [
-//     {
-//         name: "Jeanne",
-//         forename: "Dupont"
-//     }, {
-//         name: "Pierre",
-//         forename: "Art"
-//     }, {
-//         name: "Jean",
-//         forename: "Diu"
-//     }, {
-//         name: "Luc",
-//         forename: "Cert"
-//     }
-// ];
-    console.log(this.displayedPeople);
   }
 }
