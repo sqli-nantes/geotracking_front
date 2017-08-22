@@ -19,7 +19,6 @@ export class RightDetailsComponent {
 
   backToMap(){
     this.showChild.emit(false);
-    console.log(this.showChild);
   }
 
 }

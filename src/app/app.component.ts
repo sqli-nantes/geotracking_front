@@ -94,7 +94,6 @@ export class AppComponent {
     this.displayedPeople = this.peopleService.findPeopleByCoordinates(this.people, coord);
     this.show = true;
     this.company = this.peopleService.getCompanyName(this.displayedPeople);
-    console.log(this.company);
   }
 
   backToMap(showChild: boolean){
