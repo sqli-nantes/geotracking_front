@@ -15,12 +15,13 @@ export class AppComponent {
   people = [];
   displayedPeople = [];
   mymap;
+  show: boolean;
 
   constructor(private peopleService: PeopleService) {
   }
 
   ngOnInit() {
-    this.mymap = L.map('mapid').setView([47.2172500, -1.5533600], 13);
+    this.mymap = L.map('mapid').setView([47.2172500, -1.5533600], 12);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
@@ -90,5 +91,11 @@ export class AppComponent {
 
   displayPeopleOnMarkerClick(coord) {
     this.displayedPeople = this.peopleService.findPeopleByCoordinates(this.people, coord);
+    this.show = true;
+  }
+
+  backToMap(showChild: boolean){
+    this.show = false;
+    this.setInitialColor();
   }
 }

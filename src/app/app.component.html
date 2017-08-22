@@ -6,6 +6,6 @@
 
 </div>
 <div id="main-container">
-  <app-right-details *ngIf="displayedPeople.length != 0" [people]="displayedPeople"></app-right-details>
+  <app-right-details *ngIf="show" [people]="displayedPeople" (showChild)=backToMap($event) ></app-right-details>
   <div id="mapid"></div>
 </div>

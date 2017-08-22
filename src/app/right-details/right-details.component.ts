@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { bootstrap } from '../people.service';
 import { PeopleService } from '../people.service';
-import { Input } from '@angular/core';
 
 import { Person } from '../shared/person';
 
@@ -13,7 +12,13 @@ import { Person } from '../shared/person';
 export class RightDetailsComponent {
 
   @Input() people: Array<Person>;
+  @Output() showChild = new EventEmitter<boolean>();
   constructor(private peopleService: PeopleService) {
+  }
+
+  backToMap(){
+    this.showChild.emit(false);
+    console.log(this.showChild);
   }
 
 }
