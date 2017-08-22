@@ -1,14 +1,12 @@
 <div id="blur-bg"></div>
 <div id="container-right-details">
-  <div id="title">
-    <div>
-      <h3>
+  <div id="title-container">
+    <div id="title-text">
         {{companyName}}
-      </h3>
     </div>
 
-    <div> {{peopleNumber}} <span *ngIf="peopleNumber > 1 ; else elseBlock">collaborateurs</span>
-      <ng-template #elseBlock>collaborateur</ng-template>
+    <div id="number-people-text"> {{peopleNumber}} <span *ngIf="peopleNumber > 1 ; else elseBlock">collaborateurs</span>
+      <ng-template #elseBlock><span>collaborateur</span></ng-template>
     </div>
   </div>
   <div (click)="backToMap()" id="back">

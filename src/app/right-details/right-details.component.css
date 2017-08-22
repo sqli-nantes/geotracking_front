@@ -1,8 +1,25 @@
-#title{
+#title-container{
   height: 120px;
   background-color: rgba(28, 28, 27, 0.75);
   width: 260px;
 }
+#title-text{
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 50px;
+}
+
+#number-people-text{
+    font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+#number-people-text > span{
+   font-size: 13px;
+}
+
+
 #back{
 height: 40px;
   text-align: center;
@@ -25,20 +42,20 @@ app-person-details{
   /* width: 100%;
   height: 100%; */
   position: absolute;
-  top: 100px;
+  top: 80px;
   left: calc(100% - 300px);
   z-index: 9999;
-  height: 679px;
+  height: 659px;
   margin: 20px 20px 20px 20px;
 }
 
 #blur-bg {
   margin: 20px 20px 20px 20px;
   position: absolute;
-  top: 100px;
+  top: 80px;
   width: 260px;
   left: calc(100% - 300px);
   z-index: 9998;
-  height: 679px;
+  height: 659px;
   background-color: rgba(255, 255, 255, .9);
 }

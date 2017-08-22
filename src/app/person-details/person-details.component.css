@@ -23,3 +23,8 @@
 .details{
   padding-top: 25px;
 }
+
+.line {
+  opacity: 0.2;
+  border: solid 1px #ffffff;
+}
