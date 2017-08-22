@@ -6,6 +6,6 @@
 
 </div>
 <div id="main-container">
-  <app-right-details *ngIf="show" [people]="displayedPeople" (showChild)=backToMap($event) company="{{company.name}}" ></app-right-details>
+  <app-right-details *ngIf="show" [people]="displayedPeople" (showChild)=backToMap($event) companyName="{{company.name}}" ></app-right-details>
   <div id="mapid"></div>
 </div>

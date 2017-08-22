@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { bootstrap } from '../people.service';
 import { PeopleService } from '../people.service';
 
@@ -9,16 +9,22 @@ import { Person } from '../shared/person';
   templateUrl: './right-details.component.html',
   styleUrls: ['./right-details.component.css']
 })
-export class RightDetailsComponent {
+export class RightDetailsComponent implements OnChanges {
 
   @Input() people: Array<Person>;
-  @Input() company: string;
+  @Input() companyName: string;
   @Output() showChild = new EventEmitter<boolean>();
+  peopleNumber: number;
   constructor(private peopleService: PeopleService) {
   }
 
-  backToMap(){
+  backToMap() {
     this.showChild.emit(false);
+  }
+
+  //In this case onChanges is used as a trigger to get the right number of People
+  ngOnChanges(changes: SimpleChanges) {
+    this.peopleNumber = this.peopleService.getPeopleNumber(this.people);
   }
 
 }

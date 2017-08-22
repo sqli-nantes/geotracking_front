@@ -22,7 +22,7 @@ const bootstrap = [
 
 @Injectable()
 export class PeopleService {
-    people : Array<Person>;
+    people: Array<Person>;
     displayedPeople: Array<Person>;
 
     constructor(private http: HttpClient) { }
@@ -38,9 +38,6 @@ export class PeopleService {
 
     }
 
-
-    //http://nominatim.openstreetmap.org/?format=json&addressdetails=0&q=10+rue+de+l
-    //aponie+Nantes
     /**
      * Get coordinates from WS for one address
      */
@@ -53,15 +50,27 @@ export class PeopleService {
         });
     }
 
-
-    findPeopleByCoordinates(people, coord): Array<Person>{
-       return people.filter((person)=>{
+    /**
+     * Return an array of people if the coordinates match
+     * @param people 
+     * @param coord 
+     */
+    findPeopleByCoordinates(people, coord): Array<Person> {
+        return people.filter((person) => {
             return person.lat == coord.lat && person.lon == coord.lon;
         })
     }
 
-    getCompanyName(people){
+    getCompanyName(people) {
         return people && people[0] && people[0].company;
+    }
+
+    /**
+     * Get number of displayed people 
+     * @param people 
+     */
+    getPeopleNumber(people): number {
+        return people.length;
     }
 }
 

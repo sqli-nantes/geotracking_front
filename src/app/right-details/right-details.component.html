@@ -2,7 +2,9 @@
 <div id="container-right-details">
   <div id="title">
     <h3>
-      {{company}}
+      {{companyName}}
+      {{peopleNumber}} <span *ngIf = "peopleNumber > 1 ; else elseBlock">collaborateurs</span>
+         <ng-template #elseBlock>collaborateur</ng-template>
     </h3>
   </div>
   <div (click)="backToMap()" id="back">
