@@ -1,14 +1,18 @@
 <div id="blur-bg"></div>
 <div id="container-right-details">
   <div id="title">
-    <h3>
-      {{companyName}}
-      {{peopleNumber}} <span *ngIf = "peopleNumber > 1 ; else elseBlock">collaborateurs</span>
-         <ng-template #elseBlock>collaborateur</ng-template>
-    </h3>
+    <div>
+      <h3>
+        {{companyName}}
+      </h3>
+    </div>
+
+    <div> {{peopleNumber}} <span *ngIf="peopleNumber > 1 ; else elseBlock">collaborateurs</span>
+      <ng-template #elseBlock>collaborateur</ng-template>
+    </div>
   </div>
   <div (click)="backToMap()" id="back">
-    bouton back
+    <div id="back_text">Retour au plan</div>
   </div>
   <div id="people-container">
     <div *ngFor="let person of people">

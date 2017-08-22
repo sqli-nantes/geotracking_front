@@ -1,8 +1,16 @@
 #title{
   height: 120px;
+  background-color: rgba(28, 28, 27, 0.75);
+  width: 260px;
 }
 #back{
 height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+#back_text{
+  padding-top: 11px;
+  color: #957944;
 }
 #people-container{
   height: 500px;
