@@ -39,7 +39,6 @@ export class AppComponent {
           person.lat = coord.lat;
           person.lon = coord.lon;
           this.drawCircleMarker(coord, null);
-          person.picture = blob;
         })
       })
     });
