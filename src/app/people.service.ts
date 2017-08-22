@@ -4,21 +4,6 @@ import { HttpParams } from '@angular/common/http';
 
 import { Person } from './shared/person';
 import { Coordinates } from './shared/coordinates';
-const bootstrap = [
-    {
-        name: "Jeanne",
-        forename: "Dupont"
-    }, {
-        name: "Pierre",
-        forename: "Art"
-    }, {
-        name: "Jean",
-        forename: "Diu"
-    }, {
-        name: "Luc",
-        forename: "Cert"
-    }
-]
 
 @Injectable()
 export class PeopleService {
@@ -73,5 +58,3 @@ export class PeopleService {
         return people.length;
     }
 }
-
-export { bootstrap }

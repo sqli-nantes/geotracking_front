@@ -7,4 +7,5 @@ export class Person {
     company: Company;
     lat : string;
     lon: string;
+    picture: string;
 }

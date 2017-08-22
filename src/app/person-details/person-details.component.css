@@ -5,8 +5,7 @@
 .fond {
   width: 260px;
   height: 100px;
-  opacity: 0.5;
-  background-color: #1c1c1b;
+  background-color: rgba(28,28,27,0.5);
 }
 
 .forename {
@@ -22,9 +21,26 @@
 
 .details{
   padding-top: 25px;
+  padding-left: 1px;
 }
 
 .line {
   opacity: 0.2;
   border: solid 1px #ffffff;
 }
+
+#image{
+  padding: 15px 0 0 10px;
+      width: 75px;
+  height: 75px;
+}
+#image > .circle > img{
+    width: 70px;
+  height: 70px;
+}
+.circle{
+   width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }

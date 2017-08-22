@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { bootstrap } from '../people.service';
 import { PeopleService } from '../people.service';
 
 import { Person } from '../shared/person';

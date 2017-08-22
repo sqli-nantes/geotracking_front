@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import 'leaflet';
 import { PeopleService } from './people.service';
 import { Person } from './shared/person';
+import {blob} from './shared/bootstrap'
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,7 @@ export class AppComponent {
           person.lat = coord.lat;
           person.lon = coord.lon;
           this.drawCircleMarker(coord, null);
+          person.picture = blob;
         })
       })
     });
