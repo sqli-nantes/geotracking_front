@@ -16,6 +16,7 @@ export class AppComponent {
   displayedPeople = [];
   mymap;
   show: boolean;
+  company: any;
 
   constructor(private peopleService: PeopleService) {
   }
@@ -92,6 +93,8 @@ export class AppComponent {
   displayPeopleOnMarkerClick(coord) {
     this.displayedPeople = this.peopleService.findPeopleByCoordinates(this.people, coord);
     this.show = true;
+    this.company = this.peopleService.getCompanyName(this.displayedPeople);
+    console.log(this.company);
   }
 
   backToMap(showChild: boolean){

@@ -59,6 +59,10 @@ export class PeopleService {
             return person.lat == coord.lat && person.lon == coord.lon;
         })
     }
+
+    getCompanyName(people){
+        return people && people[0] && people[0].company;
+    }
 }
 
 export { bootstrap }

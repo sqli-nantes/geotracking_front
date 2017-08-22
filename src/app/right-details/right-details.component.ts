@@ -12,6 +12,7 @@ import { Person } from '../shared/person';
 export class RightDetailsComponent {
 
   @Input() people: Array<Person>;
+  @Input() company: string;
   @Output() showChild = new EventEmitter<boolean>();
   constructor(private peopleService: PeopleService) {
   }
