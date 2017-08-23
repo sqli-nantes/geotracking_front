@@ -36,8 +36,8 @@ export class AppComponent {
       data.forEach((person) => {
         this.people.push(person);
         this.peopleService.getCoordinate(person.company.address).then((coord) => {
-          person.lat = coord.lat;
-          person.lon = coord.lon;
+          person.company.lat = coord.lat;
+          person.company.lon = coord.lon;
           this.drawCircleMarker(coord, null);
         })
       })

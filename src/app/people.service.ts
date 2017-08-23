@@ -42,7 +42,7 @@ export class PeopleService {
      */
     findPeopleByCoordinates(people, coord): Array<Person> {
         return people.filter((person) => {
-            return person.lat == coord.lat && person.lon == coord.lon;
+            return person.company.lat == coord.lat && person.company.lon == coord.lon;
         })
     }
 
@@ -56,5 +56,13 @@ export class PeopleService {
      */
     getPeopleNumber(people): number {
         return people.length;
+    }
+
+    getPeopleFromTrombi(){
+        return new Promise((resolve, reject) => {
+            this.http.get('https://trombi.sqli.com/trombi/rest/user/?isLight=true').subscribe(data => {
+                resolve(data);
+            });
+        });
     }
 }
