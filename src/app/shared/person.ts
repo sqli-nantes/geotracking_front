@@ -5,5 +5,6 @@ export class Person {
     name : string;
     forename : string;
     company: Company;
+    uid: string;
     picture: string;
 }

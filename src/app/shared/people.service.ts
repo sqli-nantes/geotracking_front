@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 
-import { Person } from './shared/person';
-import { Coordinates } from './shared/coordinates';
+import { Person } from './person';
+import { Coordinates } from './coordinates';
+import {constants} from '../utils/constants';
 
 @Injectable()
 export class PeopleService {
@@ -14,13 +15,12 @@ export class PeopleService {
 
     getPeople(): Promise<Array<Person>> {
         return new Promise((resolve, reject) => {
-            this.http.get('http://localhost:8080/people').subscribe(data => {
+            this.http.get(constants.URI_ROOT + '/people').subscribe(data => {
                 // Read the result field from the JSON response.
                 let result = data['result'];
                 resolve(result);
             });
         });
-
     }
 
     /**
@@ -29,7 +29,7 @@ export class PeopleService {
     getCoordinate(address): Promise<Coordinates> {
         const params = new HttpParams().set('format', "json").set('addressdetails', "0").set('q', address);
         return new Promise((resolve, reject) => {
-            this.http.get('http://nominatim.openstreetmap.org', { params: params }).subscribe(data => {
+            this.http.get(constants.URI_NOMINATIM, { params: params }).subscribe(data => {
                 resolve(data[0]);
             });
         });
@@ -58,11 +58,18 @@ export class PeopleService {
         return people.length;
     }
 
-    getPeopleFromTrombi(){
+    getPeopleFromTrombi() {
         return new Promise((resolve, reject) => {
-            this.http.get('https://trombi.sqli.com/trombi/rest/user/?isLight=true').subscribe(data => {
+            this.http.get(constants.URI_TROMBI_ROOT + constants.URI_TROMBI_REST + constants.URI_TROMBI_USER).subscribe(data => {
                 resolve(data);
             });
         });
     }
+
+    findPictureFromTrombi(uid, trombi) {
+        return trombi.users.find((user) => {
+            return user.uid === uid;
+        })
+    }
+
 }

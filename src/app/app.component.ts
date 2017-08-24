@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import 'leaflet';
-import { PeopleService } from './people.service';
+import { PeopleService } from './shared/people.service';
 import { Person } from './shared/person';
 import {blob} from './shared/bootstrap'
+import {constants} from './utils/constants'
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,14 @@ export class AppComponent {
   mymap;
   show: boolean;
   company: any;
+  peopleFromTrombi;
 
   constructor(private peopleService: PeopleService) {
   }
 
   ngOnInit() {
     this.mymap = L.map('mapid').setView([47.2172500, -1.5533600], 12);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    L.tileLayer(constants.URI_MAPBOX, {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
       id: 'mapbox.streets',
@@ -42,6 +44,21 @@ export class AppComponent {
         })
       })
     });
+
+    this.peopleService.getPeopleFromTrombi().then((trombi)=>{
+      this.peopleFromTrombi = trombi;
+      this.people.forEach((person)=>{
+        const userFromTrombi = this.peopleService.findPictureFromTrombi(person.uid, trombi);
+        //https://trombi.sqli.com/img/pics/jbrancourt_v1499241514539.jpg
+        const pictureId = userFromTrombi && userFromTrombi.photo || "";
+        if (pictureId !== ""){
+          person.picture = constants.URI_TROMBI_ROOT + constants.URI_TROMBI_PICS + "/"+ person.uid + "_v" + pictureId + ".jpg";
+        }else{
+          person.picture = "";
+        }
+      })
+    })
+    
   }
 
   /**
@@ -95,6 +112,8 @@ export class AppComponent {
     this.displayedPeople = this.peopleService.findPeopleByCoordinates(this.people, coord);
     this.show = true;
     this.company = this.peopleService.getCompanyName(this.displayedPeople);
+    
+ 
   }
 
   backToMap(showChild: boolean){

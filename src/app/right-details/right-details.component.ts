@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { PeopleService } from '../people.service';
+import { PeopleService } from '../shared/people.service';
 
 import { Person } from '../shared/person';
 
